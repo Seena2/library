@@ -1,0 +1,22 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header{
+    height: 5rem;
+    background-color: #f7f456;
+}
+.books{
+    background-color: #cddcdd;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+}
+.card{
+    background-color: #11b0bb;
+    border: 2px solid;
+    margin: 1rem;
+    padding: 1rem;
+}
