@@ -47,3 +47,5 @@ function displayBooks() {
         bookItem.textContent = book;
     }
 }
+
+console.log(document.title);
