@@ -25,10 +25,17 @@
             <div class="card">6</div>
             <div class="card">7</div>
             <div class="card">8</div>
-            <div class="card">9</div>
+            <div class="card"><button type="button" class="dele">X</button>
+                <img src="" alt=""  class="cover">
+                
+                Title: <span><a href="#">The book title</a></span> </br>
+                Author: <span>Name of the author</span>
+                Pages:<span><input type="number"></span>
+                Read:<input type="radio">
+            </div>
         </div>
+        <button type="button">Add New Book</button>
         <div class="pop_form">
-            <button type="button">Add Book</button>
             <form class="frm_book" action="" method="post">
                 <div>
                     <label for="title">Title: </label>
@@ -46,6 +53,7 @@
                     <label for="isRead">Have Read?: </label>
                     <input type="text" id="isRead" name="isRead">
                 </div>
+                <input type="file">
                 <button>Add+</button>
             </form>
         </div>

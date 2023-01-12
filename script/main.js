@@ -1,29 +1,33 @@
 
 //Project: Library
+//select cards
+const cards = document.querySelector('.cards');
 
 //Array to store book objects
 let myLibrary = [
-    book1 = {
+    {
         title: "Harry potter",
         author: 'David boe',
-        read: 'yes',
-        func: function () {
+        pages:132,
+        read: true,
+        info: function () {
             console.log(this.title);
         }
     },
-    book2 = {
+    {
         title: "Linux",
         author: 'Baqqla Garba',
-        read: "No",
-        func: function () {
+        pages:200,
+        read: false,
+        info: function () {
             console.log(this.title);
         }
     }
-
 ];
 
-//Book Constructor
-function Book(title, author, pages, read) {
+
+//object-can be a constructor
+function Booke(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -34,12 +38,24 @@ function Book(title, author, pages, read) {
     }
 }
 
+const Book = {
+    info: function () {
+        console.log(this.information);
+    }
+}
+//creating book objects from protoype BOOK
+const bookd = Object.create(Book);
+bookd.information = 'Another book';
+bookd.info();
 
 
 //Function that take user input and store book objects in to array
-function addBookToLibrary() {
-
+function addBookToLibrary(title, author, pages, read) {
+    let obj = {};
+    obj.title = title;
+    myLibrary.push();
 }
+
 //function that loop through the array and displays each book on the page
 function displayBooks() {
     for (let book in myLibrary) {
@@ -48,4 +64,4 @@ function displayBooks() {
     }
 }
 
-console.log(document.title);
+

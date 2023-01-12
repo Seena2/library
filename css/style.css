@@ -20,3 +20,37 @@ html,body{
     margin: 1rem;
     padding: 1rem;
 }
+/* cancel or delete icon style */
+.dele{
+    color:red;
+    font: bold;
+    float: right;
+    margin-right: -10px;
+    margin-top: -10px;
+}
+/*cover image */
+.cover{
+    width: 190px;
+    height: 25vh;
+    background-color: bisque;
+}
+
+/*form styling*/
+.pop_form{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.frm_book{
+    
+    padding: 3rem;
+    margin-top: 2rem;
+    background-color: #cddcdd;
+    z-index: 1;
+}
+.frm_book input{
+    width: 95%;
+    justify-self: center;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
