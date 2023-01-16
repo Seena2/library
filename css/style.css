@@ -21,7 +21,7 @@ html,body{
     padding: 1rem;
 }
 /* cancel or delete icon style */
-.dele{
+.delete{
     color:red;
     font: bold;
     float: right;
@@ -37,12 +37,12 @@ html,body{
 
 /*form styling*/
 .pop_form{
+   /* visibility: hidden;*/
     display: grid;
     justify-content: center;
     align-items: center;
 }
 .frm_book{
-    
     padding: 3rem;
     margin-top: 2rem;
     background-color: #cddcdd;

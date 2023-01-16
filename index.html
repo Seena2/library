@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,20 +11,22 @@
 <body>
     <div class="container">
         <div class="header">
-            <a href="#">Books</a>
-            <a href="#">Category</a>
+            <div class="menus">
+                <a href="#">Books</a>
+                <a href="#">Category</a>
+            </div>
+           <div class="search">
+            <input type="text" class="form_control" id="filter" placeholder="search items..">
+           </div>
+
         </div>
         <h1>Project: Library</h1>
         <div class="books">
             <div class="card">1</div>
             <div class="card">2</div>
-            <div class="card">3</div>
-            <div class="card">4</div>
-            <div class="card">5</div>
-            <div class="card">6</div>
-            <div class="card">7</div>
-            <div class="card">8</div>
-            <div class="card"><button type="button" class="dele">X</button>
+            
+            <div class="card">
+                <button type="button" class="btn delete">X</button>
                 <img src="" alt=""  class="cover">
                 
                 Title: <span><a href="#">The book title</a></span> </br>
@@ -34,9 +35,12 @@
                 Read:<input type="radio">
             </div>
         </div>
-        <button type="button">Add New Book</button>
+        <form action="" method="post" id="addForm">
+            <button type="submit" class="addBook">Add New Book</button>
+        </form>
+        
         <div class="pop_form">
-            <form class="frm_book" action="" method="post">
+            <form id="form_book" action="" method="post">
                 <div>
                     <label for="title">Title: </label>
                     <input type="text" id="title" name="title">
@@ -53,8 +57,9 @@
                     <label for="isRead">Have Read?: </label>
                     <input type="text" id="isRead" name="isRead">
                 </div>
-                <input type="file">
-                <button>Add+</button>
+                <label for="coverImage">cover Iamge</label>
+                <input type="file" id="coverImage" name="coverImage">
+                <button> Add+ </button>
             </form>
         </div>
     </div>
