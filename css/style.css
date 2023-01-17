@@ -1,56 +1,85 @@
-html,body{
+html,
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.header{
+
+.header {
     height: 5rem;
     background-color: #f7f456;
 }
-.books{
+
+.books {
+    position: relative;
     background-color: #cddcdd;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     gap: 1rem;
 }
-.card{
+
+.card {
     background-color: #11b0bb;
     border: 2px solid;
     margin: 1rem;
     padding: 1rem;
 }
+
 /* cancel or delete icon style */
-.delete{
-    color:red;
+.delete {
+    color: red;
     font: bold;
     float: right;
     margin-right: -10px;
     margin-top: -10px;
 }
+
 /*cover image */
-.cover{
+.cover {
     width: 190px;
     height: 25vh;
     background-color: bisque;
 }
 
 /*form styling*/
-.pop_form{
-   /* visibility: hidden;*/
-    display: grid;
-    justify-content: center;
-    align-items: center;
+.pop_form {
+    position: absolute;
+    /* take out of normal flow of elements and overlay over the grid */
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: 1rem;
+    background-color: rgb(200, 200, 222, 0.8);
+    z-index: 2;
+    transition: 0.3s;
+   display: none;
 }
-.frm_book{
-    padding: 3rem;
-    margin-top: 2rem;
-    background-color: #cddcdd;
-    z-index: 1;
+
+.frm_book {
+    padding: 1rem;
+    background-color: #165ba0;
+    margin: 2rem 18rem auto 18rem;
+    border-radius: 15px;
+    color: #ffffff;
 }
-.frm_book input{
+.frm_div label{
+    left: 2rem;
+}
+.frm_div input {
+    width: 94%;
+    margin-bottom:0.4rem;
+    justify-self: start;
+    font-size: 0.9rem;
+    padding: 0.3rem;
+}
+/*Add Book button*/
+.addBtn{
     width: 95%;
-    justify-self: center;
-    margin-left: 5px;
-    margin-bottom: 10px;
+    background-color: #21d34d;
+    border-color: none;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+    font-size: 1rem;
 }

@@ -1,24 +1,24 @@
+//code -first- jan15 2023
 
 //PROJECT : LIBRARY
 //SELECTING TARGET ELEMENTS
-//Select the searchbox
-const search = document.getElementById('filter');
+//select the form containing add New book button
+let addForm = document.querySelector('.displayForm');
 
 //select books grid container
 const books = document.querySelector('.books');
 
-//select add New book button
-let displayForm = document.querySelector('.displayForm');
+//Select the button in the add book form
+const addBtn = document.querySelector('.addBook');
 
 //select form to accept user input
 const form = document.getElementById('form_book');
 
-//select div containing the Add book form
+//select div container containing the book form
 const formDiv = document.querySelector('.pop_form');
 
-//Select the button in the add book form
-const addBook = document.querySelector('.addBook');
-
+//Select the searchbox
+const search = document.getElementById('filter');
 
 
 //ADD EVENTS 
@@ -26,10 +26,10 @@ const addBook = document.querySelector('.addBook');
 document.addEventListener('DOMContentLoaded', displayBooks);
 
 //Add event to display add book form
-displayForm.addEventListener('click', showForm);
+addForm.addEventListener('click', showForm);
 
-//Add form submit event when add new book button is clicked
-form.addEventListener('submit', addBookToLibrary);
+//form submit event when add new book button is clicked
+addBtn.addEventListener('submit', addBookToLibrary);
 
 //add event listener to the books grid to catch click activity
 books.addEventListener('click', removeBooks);
@@ -79,53 +79,22 @@ function Book(title, author, pages, read, img) {
     const info = console.log(this.information());
 }
 
-//function to show the Form when Add New book button is clicked
-function showForm(e) {
-    formDiv.style.display = 'block';
-}
+//creating book objects from protoype BOOK
+const bookd = Object.create(Book);
+bookd.title = "door";
+bookd.info;
 
 
-
-//Function that take user input and store book objects in to array
-function addBookToLibrary(e) {
-    //prevent the default behaviour of button to submit form content to server
-    //i.e. ignore submiting form content since we dont have storage yet
-    e.preventDefault();
-
-    //creating book objects from protoype BOOK to store user input
-    const newBook = Object.create(Book);
-    //collect user input value to the object
-    newBook.title = document.getElementById('title').value;
-    newBook.author = document.getElementById('author').value;
-    newBook.pages = document.getElementById('pages').value;
-    newBook.read = document.getElementById('isRead').value;
-    newBook.cover = document.getElementById('coverImage').value;
-
-    //create new div element to hold this values
-    let div = document.createElement('div'); 
-    //Add this new book object to the Array-MyLibrary;
-    myLibrary.push(newBook);
-    formDiv.style.display = 'none';
-    //display the old books along the new one
-    if(myLibrary.length!=0){
-        myLibrary
-    }
-    displayBooks();
-}
 //function that loop through the array and displays each book on the page
-function displayBooks(e) {
+function displayBooks() {
 
     //get all the objects and its value from the array by iterating it, 
-   
     for (i = 0; i < myLibrary.length; i++) {
-
-         // and store it on temp object
-         const tempBook = Object.create(Book);
-         tempBook.title= myLibrary[i].title;
-         tempBook.author= myLibrary[i].author;
-         tempBook.pages = myLibrary[i].pages;
-         tempBook.read= myLibrary[i].read;
-         tempBook.cover = myLibrary[i].cover;
+        let bookTitle = myLibrary[i].title;
+        let bookAuthor = myLibrary[i].author;
+        let bookPages = myLibrary[i].pages;
+        let readTheBook = myLibrary[i].read;
+        let coverImg = myLibrary[i].cover;
 
         //create new div element
         let div = document.createElement('div');
@@ -141,11 +110,11 @@ function displayBooks(e) {
         let coverImage = document.createElement('img');
 
         //Append each value from the object as text node to the paragraph
-        let titleNode = document.createTextNode( tempBook.title);
-        let authorNode = document.createTextNode(tempBook.author)
-        let pagesNode = document.createTextNode( tempBook.pages)
-        let readNode = document.createTextNode(tempBook.read)
-        let coverNode = document.createTextNode(tempBook.cover)
+        let titleNode = document.createTextNode(bookTitle);
+        let authorNode = document.createTextNode(bookAuthor)
+        let pagesNode = document.createTextNode(bookPages)
+        let readNode = document.createTextNode(readTheBook)
+        let coverNode = document.createTextNode(coverImg)
 
         //Append the values from the array to the paragraph/div
         titlePara.appendChild(titleNode);
@@ -170,6 +139,7 @@ function displayBooks(e) {
         //Add the delete button as well as the paragraphs to the div
         div.appendChild(titlePara);
         div.appendChild(deleteBtn);
+
         div.appendChild(authorPara);
         div.appendChild(pagesPara);
         div.appendChild(readPara);
@@ -179,7 +149,68 @@ function displayBooks(e) {
         books.appendChild(div);
     }
 }
+//function to show the Form when Add New book button is clicked
+function showForm(e) {
+    formDiv.style.display = 'block';
+}
 
+
+//Function that take user input and store book objects in to array
+function addBookToLibrary(e) {
+    
+    //prevent the default behaviour of button to submit form content to server
+    //i.e. ignore submiting form content since we dont have storage yet
+    e.preventDefault();
+    //test the function, should print 1 when the button is clicked
+    //console.log(1); 
+    //pop the input form that accepts the user input to get their values
+    //formDiv.setAttribute(visibility:show);
+    //collect user input value
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    let readTheBook = document.getElementById('isRead').value;
+    let coverImg = document.getElementById('coverImage').value;
+
+    //create new div element
+    let div = document.createElement('div');
+
+    //Add class to the div
+    div.className = 'card';
+    //console.log(div); //checks if div is added to DOM
+
+    //Append the value recieved from user to the div
+    //Add text node with input value 
+    let newTitle = document.createTextNode(title);
+
+    let newAuthor = document.createTextNode(author);
+    let newPages = document.createTextNode(pages);
+    let isRead = document.createTextNode(readTheBook);
+    let cover = document.createTextNode(coverImg);
+    div.appendChild(newTitle);
+    div.appendChild(newAuthor);
+    div.appendChild(newPages);
+    div.appendChild(isRead);
+    div.appendChild(cover);
+
+
+    // Add the delete button and other HTML
+    let deleteBtn = document.createElement('button');
+    //Add classes to delete btn
+    deleteBtn.className = 'btn delete';
+
+    //Append the text node 'X'
+    deleteBtn.appendChild(document.createTextNode('X'));
+
+    //append the button to the div
+    div.appendChild(deleteBtn)
+
+    //Append(adds) the div to the books grid container
+    books.appendChild(div);
+
+
+
+}
 //REMOVING BOOKS
 //Function to remove books from the grid when delete btn is clicked
 function removeBooks(e) {
@@ -197,6 +228,19 @@ function removeBooks(e) {
     }
 
 }
+
+/*
+function addBookToLibrary(title, author, pages, read) {
+    let obj = {};
+    obj.title = title;
+    obj.author=author;
+    obj.pages =pages;
+    obj.read=read;
+    myLibrary.push();
+}
+*/
+
+
 
 //Function to filter or search books
 function searchBooks(e) {
@@ -222,16 +266,7 @@ function searchBooks(e) {
         } else {
             book.style.display = 'none';
         }
-        //This is not good solution , to avoid form from poping when key is up
-        formDiv.style.display = 'none';
     });
-}
 
-//Do the following on your next visit
-//1-obtimize the code to use more objects rather than primitive data types
-//2 -resolve the duplicate display of the div's in DOM in displayBooks function when new book is added
-//3-compare the value resived from searchbox with each objects 'Title' 
-//4-Style the delete and position it at right corner
-//5-accept image fine for cover of the book and display it back on the div
-//6-accept file attachments
-//7-include radio, checkbox and dropdown input types to accept user input and store the data to te array
+
+}
