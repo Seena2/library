@@ -10,7 +10,7 @@ const books = document.querySelector('.books');
 //select add New book button
 let displayForm = document.querySelector('.displayForm');
 
-//select form to accept user input
+//select form accepting user input, that contain add book button
 const form = document.getElementById('form_book');
 
 //select div containing the Add book form
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', displayBooks);
 //Add event to display add book form
 displayForm.addEventListener('click', showForm);
 
-//Add form submit event when add new book button is clicked
+//Add event on submit  when add book button is clicked on pop up form
 form.addEventListener('submit', addBookToLibrary);
 
 //add event listener to the books grid to catch click activity
@@ -63,9 +63,9 @@ let myLibrary = [
             console.log(this.title);
         }
     }
-]
+];
 
-//object- constructor
+//Book constructor
 function Book(title, author, pages, read, img) {
     this.title = title;
     this.author = author;
@@ -102,12 +102,12 @@ function addBookToLibrary(e) {
     newBook.cover = document.getElementById('coverImage').value;
 
     //create new div element to hold this values
-    let div = document.createElement('div'); 
+    let div = document.createElement('div');
     //Add this new book object to the Array-MyLibrary;
     myLibrary.push(newBook);
     formDiv.style.display = 'none';
     //display the old books along the new one
-    if(myLibrary.length!=0){
+    if (myLibrary.length != 0) {
         myLibrary
     }
     displayBooks();
@@ -116,16 +116,15 @@ function addBookToLibrary(e) {
 function displayBooks(e) {
 
     //get all the objects and its value from the array by iterating it, 
-   
     for (i = 0; i < myLibrary.length; i++) {
 
-         // and store it on temp object
-         const tempBook = Object.create(Book);
-         tempBook.title= myLibrary[i].title;
-         tempBook.author= myLibrary[i].author;
-         tempBook.pages = myLibrary[i].pages;
-         tempBook.read= myLibrary[i].read;
-         tempBook.cover = myLibrary[i].cover;
+        // and store it on temp object
+        const tempBook = Object.create(Book);
+        tempBook.title = myLibrary[i].title;
+        tempBook.author = myLibrary[i].author;
+        tempBook.pages = myLibrary[i].pages;
+        tempBook.read = myLibrary[i].read;
+        tempBook.cover = myLibrary[i].cover;
 
         //create new div element
         let div = document.createElement('div');
@@ -140,10 +139,10 @@ function displayBooks(e) {
         let readPara = document.createElement('p');
         let coverImage = document.createElement('img');
 
-        //Append each value from the object as text node to the paragraph
-        let titleNode = document.createTextNode( tempBook.title);
+        // create text node of the value from the object and add to the paragraph
+        let titleNode = document.createTextNode(tempBook.title);
         let authorNode = document.createTextNode(tempBook.author)
-        let pagesNode = document.createTextNode( tempBook.pages)
+        let pagesNode = document.createTextNode(tempBook.pages)
         let readNode = document.createTextNode(tempBook.read)
         let coverNode = document.createTextNode(tempBook.cover)
 
@@ -235,3 +234,5 @@ function searchBooks(e) {
 //5-accept image fine for cover of the book and display it back on the div
 //6-accept file attachments
 //7-include radio, checkbox and dropdown input types to accept user input and store the data to te array
+//8-Delete the book object from the array not from the DOM
+//9-Add button to change the read status of the book, toogle between read and not read
